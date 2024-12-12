@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Text Extraction</title>
+</head>
+<body>
+    <h1>Upload a PDF to Extract Text</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="uploaded_folder">Choose PDF files to upload:</label>
+        <input type="file" name="uploaded_folder" id="uploaded_folder" accept=".pdf" multiple required>
+        <br><br>
+        <input type="submit" value="Upload and Extract Text">
+    </form>
+
+    {% if extracted_texts %}
+    <h2>Extracted Text</h2>
+    <ul>
+        {% for filename, text in extracted_texts.items() %}
+        <li>
+            <strong>{{ filename }}:</strong>
+            <p>{{ text }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
